@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
-import fs from "fs";
+import { existsSync, mkdirSync } from "fs";
 import { cp, lstat, mkdir, readdir, readFile, writeFile } from "fs/promises";
-import path from "node:path";
+import { join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import prompts from "prompts";
 
@@ -24,15 +24,15 @@ import prompts from "prompts";
     ]);
     const { projectName } = response;
 
-    const targetDir = path.join(process.cwd(), projectName);
-    const sourceDir = path.resolve(fileURLToPath(import.meta.url), "../cradle");
+    const targetDir = join(process.cwd(), projectName);
+    const sourceDir = resolve(fileURLToPath(import.meta.url), "../cradle");
 
     const copyFilesAndDirectories = async (source, destination) => {
       const entries = await readdir(source);
 
       for (const entry of entries) {
-        const sourcePath = path.join(source, entry);
-        const destPath = path.join(destination, entry);
+        const sourcePath = join(source, entry);
+        const destPath = join(destination, entry);
 
         const stat = await lstat(sourcePath);
 
@@ -46,7 +46,7 @@ import prompts from "prompts";
     };
 
     const renamePackageJsonName = async (targetDir, projectName) => {
-      const packageJsonPath = path.join(targetDir, "package.json");
+      const packageJsonPath = join(targetDir, "package.json");
       try {
         const packageJsonData = await readFile(packageJsonPath, "utf8");
         const packageJson = JSON.parse(packageJsonData);
@@ -61,10 +61,10 @@ import prompts from "prompts";
       }
     };
 
-    if (projectName === "." || !fs.existsSync(targetDir)) {
+    if (projectName === "." || !existsSync(targetDir)) {
       console.log("Target directory doesn't exist");
       console.log("Creating directory...");
-      fs.mkdirSync(targetDir, { recursive: true });
+      mkdirSync(targetDir, { recursive: true });
       console.log("Finished creating directory");
       await copyFilesAndDirectories(sourceDir, targetDir);
       await renamePackageJsonName(targetDir, projectName);
