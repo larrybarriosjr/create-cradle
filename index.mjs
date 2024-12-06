@@ -2,7 +2,7 @@
 
 import { existsSync, mkdirSync } from "fs";
 import { cp, lstat, mkdir, readdir, readFile, writeFile } from "fs/promises";
-import { join, resolve } from "node:path";
+import { basename, dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import prompts from "prompts";
 
@@ -35,12 +35,18 @@ import prompts from "prompts";
         const destPath = join(destination, entry);
 
         const stat = await lstat(sourcePath);
+        const filename = basename(destPath);
 
         if (stat.isDirectory()) {
           await mkdir(destPath);
           await copyFilesAndDirectories(sourcePath, destPath);
         } else {
-          await cp(sourcePath, destPath);
+          await cp(
+            sourcePath,
+            filename.startsWith("_")
+              ? resolve(dirname(destPath), filename.replace(/^_/, "."))
+              : destPath
+          );
         }
       }
     };
