@@ -64,13 +64,27 @@ import prompts from "prompts";
     if (projectName === "." || !existsSync(targetDir)) {
       console.log("Target directory doesn't exist");
       console.log("Creating directory...");
+
       mkdirSync(targetDir, { recursive: true });
       console.log("Finished creating directory");
+
       await copyFilesAndDirectories(sourceDir, targetDir);
       await renamePackageJsonName(targetDir, projectName);
       console.log(`Finished generating your project ${projectName}`);
-      if (projectName !== ".") console.log(`cd ${projectName}`);
-      console.log(`npm install`);
+
+      if (projectName !== ".") {
+        console.log(`cd ${projectName}`);
+      }
+
+      const userAgent = process.env.npm_config_user_agent ?? "";
+      const packageManager = /pnpm/.test(userAgent)
+        ? "pnpm"
+        : /yarn/.test(userAgent)
+        ? "yarn"
+        : /bun/.test(userAgent)
+        ? "bun"
+        : "npm";
+      console.log(`${packageManager} install`);
     } else {
       throw new Error("Target directory already exist!");
     }
