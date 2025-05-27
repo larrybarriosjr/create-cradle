@@ -16,8 +16,7 @@
     "zustand",
     "immer",
     "vercel",
-    "eslint",
-    "prettier"
+    "biome"
   ],
   "license": "MIT",
   "author": {

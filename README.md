@@ -9,7 +9,7 @@
 - [TanStack Router](https://tanstack.com/router/latest)
 - [Zustand](https://zustand.docs.pmnd.rs) + [Immer](https://zustand.docs.pmnd.rs/integrations/immer-middleware)
 - [Vercel Functions](https://vercel.com/docs/functions)
-- [ESLint](https://eslint.org) + [Prettier](https://prettier.io)
+- [Biome](https://biomejs.dev)
 
 ## How to Use
 
