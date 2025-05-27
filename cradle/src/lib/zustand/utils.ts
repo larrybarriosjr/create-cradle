@@ -1,4 +1,4 @@
-import { StateCreator, StoreMutatorIdentifier } from "zustand"
+import type { StateCreator, StoreMutatorIdentifier } from "zustand"
 import { immer } from "zustand/middleware/immer"
 import { shallow } from "zustand/shallow"
 import { createWithEqualityFn } from "zustand/traditional"

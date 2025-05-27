@@ -1,7 +1,7 @@
 import { TanStackRouterVite } from "@tanstack/router-plugin/vite"
 import react from "@vitejs/plugin-react-swc"
-import path from "path"
-import { defineConfig, PluginOption } from "vite"
+import path from "node:path"
+import { type PluginOption, defineConfig } from "vite"
 
 export default defineConfig({
 	envPrefix: "CRADLE_",

@@ -12,5 +12,9 @@ function RouteComponent() {
 
 	console.log(isLoading ? "loading..." : data)
 
-	return <button onClick={() => addSample("a")}>Sample</button>
+	return (
+		<button type="button" onClick={() => addSample("a")}>
+			Sample
+		</button>
+	)
 }
