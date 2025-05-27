@@ -1,43 +1,43 @@
 {
-  "name": "create-cradle",
-  "version": "1.1.2",
-  "description": "Create a full stack React app with preset configurations.",
-  "keywords": [
-    "create-cradle",
-    "cradle",
-    "full stack",
-    "react",
-    "vite",
-    "typescript",
-    "tailwindcss",
-    "tanstack",
-    "react-query",
-    "react-router",
-    "zustand",
-    "immer",
-    "vercel",
-    "biome"
-  ],
-  "license": "MIT",
-  "author": {
-    "name": "Larry Barrios Jr.",
-    "email": "github@larrybarriosjr.com",
-    "url": "https://larrybarriosjr.com"
-  },
-  "repository": {
-    "url": "https://github.com/larrybarriosjr/create-cradle"
-  },
-  "type": "module",
-  "main": "index.mjs",
-  "bin": "./index.mjs",
-  "engines": {
-    "node": "^18.0.0 || >=20.0.0"
-  },
-  "files": [
-    "index.mjs",
-    "cradle/*"
-  ],
-  "dependencies": {
-    "prompts": "^2.4.2"
-  }
+	"name": "create-cradle",
+	"version": "1.1.2",
+	"description": "Create a full stack React app with preset configurations.",
+	"keywords": [
+		"create-cradle",
+		"cradle",
+		"full stack",
+		"react",
+		"vite",
+		"typescript",
+		"tailwindcss",
+		"tanstack",
+		"react-query",
+		"react-router",
+		"zustand",
+		"immer",
+		"vercel",
+		"biome"
+	],
+	"license": "MIT",
+	"author": {
+		"name": "Larry Barrios Jr.",
+		"email": "github@larrybarriosjr.com",
+		"url": "https://larrybarriosjr.com"
+	},
+	"repository": {
+		"url": "https://github.com/larrybarriosjr/create-cradle"
+	},
+	"type": "module",
+	"main": "index.mjs",
+	"bin": "./index.mjs",
+	"engines": {
+		"node": "^18.0.0 || >=20.0.0"
+	},
+	"files": ["index.mjs", "cradle/*"],
+	"dependencies": {
+		"prompts": "^2.4.2"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.9.4"
+	}
 }
